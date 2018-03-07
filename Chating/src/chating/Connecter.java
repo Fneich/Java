@@ -33,8 +33,7 @@ public class Connecter implements Runnable{
             String ip_port=message.Message.substring(8);
             String port=ip_port.substring(0, 4);
             String ip=ip_port.substring(4);
-            System.out.println(port);
-            System.out.println(ip);
+
             Socket s = new Socket(ip,1111);
             ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
             os.writeObject(message);
@@ -42,8 +41,9 @@ public class Connecter implements Runnable{
             Socket s1 = ss.accept();
             ObjectInputStream is = new ObjectInputStream(s.getInputStream());
                 Message returnMessage = (Message) is.readObject();
+                System.out.println(returnMessage.Message);
                 if(returnMessage.Message.startsWith("/accept")){
-                Chating.connection = new Connection(s1.getInetAddress().getHostAddress(),s.getPort());
+                Chating.connection = new Connection(ip,Integer.getInteger(port));
                         Sender sender = new Sender(Chating.connection.IP,Chating.connection.PortNb);
         Recever recever = new Recever(Chating.connection.PortNb);
         Thread threadSender = new Thread(sender);

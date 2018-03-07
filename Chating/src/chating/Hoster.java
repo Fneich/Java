@@ -30,10 +30,13 @@ public class Hoster implements Runnable {
                 // System.out.println("Recever is running...");
            
                 Message returnMessage = (Message) is.readObject();
+                System.out.println(returnMessage.Message);
                             if(returnMessage.Message.startsWith("/connect")){
                                 
             String ip_port=returnMessage.Message.substring(4);
             String port=ip_port.substring(0, 4);
+                        System.out.println(port);
+                    System.out.println(s.getInetAddress().getHostAddress());
                 Data.Messages.put(returnMessage.User, returnMessage);
                 Chating.connection = new Connection(s.getInetAddress().getHostAddress(),Integer.getInteger(port));
                 
