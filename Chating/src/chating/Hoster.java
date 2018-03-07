@@ -36,7 +36,7 @@ public class Hoster implements Runnable {
             String ip_port=returnMessage.Message.substring(8);
             String port=ip_port.substring(0, 4);
             String ip= s.getInetAddress().getHostAddress();
-            int portnb=Integer.getInteger(port);
+            int portnb=Integer.parseInt(port);
                         System.out.println(port);
                     System.out.println(s.getInetAddress().getHostAddress());
                     
