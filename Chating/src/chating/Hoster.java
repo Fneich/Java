@@ -35,10 +35,13 @@ public class Hoster implements Runnable {
                                 
             String ip_port=returnMessage.Message.substring(8);
             String port=ip_port.substring(0, 4);
+            String ip= s.getInetAddress().getHostAddress();
+            int portnb=Integer.getInteger(port);
                         System.out.println(port);
                     System.out.println(s.getInetAddress().getHostAddress());
+                    
                 Data.Messages.put(returnMessage.User, returnMessage);
-                Chating.connection = new Connection(s.getInetAddress().getHostAddress(),Integer.getInteger(port));
+                Chating.connection = new Connection(ip,portnb);
                 
             Socket s1 = new Socket(Chating.connection.IP,1111);
             ObjectOutputStream os = new ObjectOutputStream(s1.getOutputStream());
