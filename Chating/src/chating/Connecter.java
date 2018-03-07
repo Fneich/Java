@@ -39,9 +39,10 @@ public class Connecter implements Runnable{
             os.writeObject(message);
              ServerSocket ss = new ServerSocket(1111);
             Socket s1 = ss.accept();
-            ObjectInputStream is = new ObjectInputStream(s.getInputStream());
+            ObjectInputStream is = new ObjectInputStream(s1.getInputStream());
                 Message returnMessage = (Message) is.readObject();
                 System.out.println(returnMessage.Message);
+                
                 if(returnMessage.Message.startsWith("/accept")){
                 Chating.connection = new Connection(ip,Integer.getInteger(port));
                         Sender sender = new Sender(Chating.connection.IP,Chating.connection.PortNb);
