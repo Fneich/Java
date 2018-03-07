@@ -48,7 +48,7 @@ public class Connecter implements Runnable{
                 
                 if(returnMessage.Message.startsWith("/accept")){
                 Chating.connection = new Connection(ip,Integer.parseInt(port));
-                        Sender sender = new Sender(Chating.connection.IP,Chating.connection.PortNb);
+        Sender sender = new Sender(Chating.connection.IP,Chating.connection.PortNb);
         Recever recever = new Recever(Chating.connection.PortNb);
         Thread threadSender = new Thread(sender);
         Thread threadRecever = new Thread(recever);

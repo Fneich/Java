@@ -15,6 +15,11 @@ public class Chating {
 
     public static String Name;
     public static Connection connection;
+    public static Sender sender ;
+    public static Recever recever ;
+       public static Thread threadSender;
+       public static Thread threadRecever ;
+        
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter You Name:");

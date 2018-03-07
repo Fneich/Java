@@ -5,6 +5,7 @@
  */
 package chating;
 
+import static chating.Chating.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -48,10 +49,10 @@ public class Hoster implements Runnable {
             Message message=new Message(chating.Chating.Name,"/accept");
             os.writeObject(message);
             System.out.println(Chating.connection.IP);
-        Sender sender = new Sender(Chating.connection.IP,Chating.connection.PortNb);
-        Recever recever = new Recever(Chating.connection.PortNb);
-        Thread threadSender = new Thread(sender);
-        Thread threadRecever = new Thread(recever);
+        sender = new Sender(Chating.connection.IP,Chating.connection.PortNb);
+        recever = new Recever(Chating.connection.PortNb);
+        threadSender = new Thread(sender);
+        threadRecever = new Thread(recever);
         threadSender.start();
         threadRecever.start();
 
