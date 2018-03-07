@@ -61,7 +61,7 @@ public class Hoster implements Runnable {
         catch (ClassNotFoundException ex) {
                 Logger.getLogger(Recever.class.getName()).log(Level.SEVERE, null, ex);
             }
-        catch(Exception ex){}
+        catch(Exception ex){System.out.println("Error");}
     }
     
 }
