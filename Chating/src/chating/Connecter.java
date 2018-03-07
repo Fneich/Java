@@ -37,8 +37,9 @@ public class Connecter implements Runnable{
             Socket s = new Socket(ip,1111);
             ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
             os.writeObject(message);
-             ServerSocket ss = new ServerSocket(1111);
-             System.out.println("hou");
+            System.out.println("hou");
+             ServerSocket ss = new ServerSocket(1112);
+             System.out.println("hou2");
             Socket s1 = ss.accept();
             ObjectInputStream is = new ObjectInputStream(s1.getInputStream());
             
