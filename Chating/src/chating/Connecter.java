@@ -61,7 +61,7 @@ public class Connecter implements Runnable{
         } catch (IOException ex) {
            // Logger.getLogger(Recever.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch(Exception ex){}}
+        catch(Exception ex){System.out.println("Error");}}
     }
 
 }
