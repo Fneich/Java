@@ -31,7 +31,8 @@ public class Hoster implements Runnable {
            
                 Message returnMessage = (Message) is.readObject();
                             if(returnMessage.Message.startsWith("/connect")){
-            String ip_port=returnMessage.Message.substring(8);
+                                
+            String ip_port=returnMessage.Message.substring(4);
             String port=ip_port.substring(0, 4);
                 Data.Messages.put(returnMessage.User, returnMessage);
                 Chating.connection = new Connection(s.getInetAddress().getHostAddress(),Integer.getInteger(port));

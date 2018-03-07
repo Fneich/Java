@@ -22,17 +22,19 @@ public class Connecter implements Runnable{
 
     @Override
     public void run() {
-             try {
+             
 
-            
                 Scanner sc = new Scanner(System.in);
             while(true){
+                try {
                 //System.out.println("Sender is running...");
             Message message=new Message(chating.Chating.Name,sc.nextLine());
             if(message.Message.startsWith("/connect")){
             String ip_port=message.Message.substring(8);
             String port=ip_port.substring(0, 4);
-            String ip=ip_port.substring(8);
+            String ip=ip_port.substring(4);
+            System.out.println(port);
+            System.out.println(ip);
             Socket s = new Socket(ip,1111);
             ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
             os.writeObject(message);
@@ -53,12 +55,14 @@ public class Connecter implements Runnable{
                 //System.out.println(returnMessage.toString());
             
             }
-
-            }
+            
+             
         } catch (IOException ex) {
-            Logger.getLogger(Recever.class.getName()).log(Level.SEVERE, null, ex);
+           // Logger.getLogger(Recever.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch(Exception ex){}
+        catch(Exception ex){}}
     }
-    
+
 }
+    
+
