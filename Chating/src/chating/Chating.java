@@ -5,6 +5,8 @@
  */
 package chating;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -14,22 +16,22 @@ import java.util.Scanner;
 public class Chating {
 
     public static String Name;
-    public static Connection connection;
-    public static Sender sender ;
-    public static Recever recever ;
-       public static Thread threadSender;
-       public static Thread threadRecever ;
+    public static HashMap<String,Connection> connections=new HashMap<String,Connection>();
+
         
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter You Name:");
         Name=sc.nextLine();
-        Hoster hoster = new Hoster();
-        Thread threadhoster = new Thread(hoster);
-        threadhoster.start();
-        Connecter connecter = new Connecter();
-        Thread threadconnecter = new Thread(connecter);
-        threadconnecter.start();
+        //Hoster hoster = new Hoster();
+        //Thread threadhoster = new Thread(hoster);
+        //threadhoster.start();
+       // Connecter connecter = new Connecter();
+       // Thread threadconnecter = new Thread(connecter);
+       // threadconnecter.start();
+        Request request = new Request();
+        Thread threadRequest = new Thread(request);
+        threadRequest.start();
         
     }
     

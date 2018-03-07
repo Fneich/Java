@@ -32,29 +32,20 @@ public class Hoster implements Runnable {
            
                 Message returnMessage = (Message) is.readObject();
                 System.out.println(returnMessage.Message);
-                            if(returnMessage.Message.startsWith("/connect")){
+                            if(returnMessage.Message.startsWith("/connect:")){
                                 
-            String ip_port=returnMessage.Message.substring(8);
-            String port=ip_port.substring(0, 4);
-            String ip= s.getInetAddress().getHostAddress();
-            int portnb=Integer.parseInt(port);
-                        System.out.println(port);
-                    System.out.println(s.getInetAddress().getHostAddress());
-                    
-                Data.Messages.put(returnMessage.User, returnMessage);
-                Chating.connection = new Connection(ip,portnb);
-                
-            Socket s1 = new Socket(Chating.connection.IP,1112);
+            String ip_port=returnMessage.Message.substring(9);
+           String Ip =ip_port.split(";")[1];
+           int Port =Integer.parseInt(ip_port.split(";")[2]);
+           String Name=ip_port.split(";")[0];
+
+            Chating.connections.put(Ip,new Connection(Name,Ip,Port));              
+            Socket s1 = new Socket(Ip,1112);
             ObjectOutputStream os = new ObjectOutputStream(s1.getOutputStream());
             Message message=new Message(chating.Chating.Name,"/accept");
             os.writeObject(message);
-            System.out.println(Chating.connection.IP);
-        sender = new Sender(Chating.connection.IP,Chating.connection.PortNb);
-        recever = new Recever(Chating.connection.PortNb);
-        threadSender = new Thread(sender);
-        threadRecever = new Thread(recever);
-        threadSender.start();
-        threadRecever.start();
+
+
 
 
 //System.out.println(returnMessage.toString());
