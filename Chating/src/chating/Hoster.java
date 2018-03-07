@@ -45,7 +45,8 @@ public class Hoster implements Runnable {
                 
             Socket s1 = new Socket(Chating.connection.IP,1112);
             ObjectOutputStream os = new ObjectOutputStream(s1.getOutputStream());
-            os.writeObject("/accept");
+            Message message=new Message(chating.Chating.Name,"/accept");
+            os.writeObject(message);
             System.out.println(Chating.connection.IP);
         Sender sender = new Sender(Chating.connection.IP,Chating.connection.PortNb);
         Recever recever = new Recever(Chating.connection.PortNb);
