@@ -50,7 +50,7 @@ public class Connecter {
             
     }
 public static void SendTo(Connection connection,String messageString) throws IOException, ClassNotFoundException{
-    
+            System.out.println(connection.IP+";"+connection.PortNb);
             Socket s = new Socket(connection.IP,connection.PortNb);
             ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
             Message message = new Message(chating.Chating.Name,messageString);
