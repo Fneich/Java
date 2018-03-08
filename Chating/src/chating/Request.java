@@ -31,7 +31,9 @@ public class Request implements Runnable{
                     String Port =request.split(";")[1];
                     
                     Connection connection=Connecter.ConnectTo(Chating.Name,IP, Port);
-                    if(connection!=null){Chating.connections.put(connection.IP, connection);}
+                    if(connection!=null){Chating.connections.put(connection.IP, connection);
+                    System.out.println("count:"+Chating.connections.size());
+                    }
                     }                   
                 } catch (IOException ex) {
                     Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);

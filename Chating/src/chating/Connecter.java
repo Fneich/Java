@@ -37,6 +37,7 @@ public class Connecter {
             if(returnMessage.Message.startsWith("/accept:")){
                 String Name=returnMessage.Message.substring(8);
                 connection=new Connection(Name,Ip,Integer.parseInt(Port));
+                
             }   
             return connection;
     }
@@ -54,6 +55,7 @@ public static void SendTo(Connection connection,String messageString) throws IOE
             ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
             Message message = new Message(chating.Chating.Name,messageString);
             os.writeObject(message);
+            s.close();
             
     }
 
