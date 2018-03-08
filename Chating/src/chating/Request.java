@@ -29,7 +29,7 @@ public class Request implements Runnable{
                     String IP =request.substring(9).split(";")[0];
                     if(!Chating.connections.containsKey(IP)){
                     String Port =request.split(";")[1];
-                    System.out.println("IP:"+IP+";Port:"+Port);
+                    
                     Connection connection=Connecter.ConnectTo(Chating.Name,IP, Port);
                     if(connection!=null){Chating.connections.put(connection.IP, connection);}
                     }                   
@@ -39,7 +39,7 @@ public class Request implements Runnable{
                     Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if(request.substring(7).startsWith("/close:")){
+            if(request.startsWith("/close:")){
             try {
                     String IP =request.substring(7);
                     if(Chating.connections.containsKey(IP)){
@@ -52,12 +52,13 @@ public class Request implements Runnable{
                 }
             }
             
-            if(request.substring(6).startsWith("/send:")){
+            if(request.startsWith("/send:")){
             try {
                     String IP =request.substring(6).split(";")[0];
                     String message = request.substring(6).split(";")[1];
+                    System.out.println("IP:"+IP);
                     if(Chating.connections.containsKey(IP)){
-                    
+                    System.out.println("IP:"+message);
                     Connecter.SendTo(Chating.connections.get(IP),message);
                     }                   
                 } catch (IOException ex) {

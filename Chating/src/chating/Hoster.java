@@ -24,12 +24,12 @@ public class Hoster implements Runnable {
     public void run() {
          try {
 
-            ServerSocket ss = new ServerSocket(1111);
-            Socket s = ss.accept();
-            ObjectInputStream is = new ObjectInputStream(s.getInputStream());
+
             while(true){
                 // System.out.println("Recever is running...");
-           
+           ServerSocket ss = new ServerSocket(1111);
+            Socket s = ss.accept();
+            ObjectInputStream is = new ObjectInputStream(s.getInputStream());
                 Message returnMessage = (Message) is.readObject();
                 System.out.println(returnMessage.Message);
                             if(returnMessage.Message.startsWith("/connect:")){
