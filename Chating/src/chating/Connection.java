@@ -27,11 +27,13 @@ public class Connection {
     }
     
     public void Connect(){
+        this.recever.Running=true;
         this.ReceverThread = new Thread(this.recever);
         this.ReceverThread.start();
     }
     public void Close() throws Throwable{
     Chating.connections.remove(this.IP);
+    this.recever.Running=false;
     this.finalize();
     }
 }

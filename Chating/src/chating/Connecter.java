@@ -48,7 +48,14 @@ public class Connecter {
             os.writeObject(message);
             
     }
-
+public static void SendTo(Connection connection,String messageString) throws IOException, ClassNotFoundException{
+    
+            Socket s = new Socket(connection.IP,connection.PortNb);
+            ObjectOutputStream os = new ObjectOutputStream(s.getOutputStream());
+            Message message = new Message(chating.Chating.Name,messageString);
+            os.writeObject(message);
+            
+    }
 
 
 }

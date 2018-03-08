@@ -24,6 +24,7 @@ public class Recever implements Runnable{
 
     
     public int PortNb;
+    public Boolean Running;
     public Recever(int portnb){
         this.PortNb=portnb;
     }
@@ -34,7 +35,7 @@ public class Recever implements Runnable{
             ServerSocket ss = new ServerSocket(this.PortNb);
             Socket s = ss.accept();
             ObjectInputStream is = new ObjectInputStream(s.getInputStream());
-            while(true){
+            while(this.Running){
                 // System.out.println("Recever is running...");
            
                 Message returnMessage = (Message) is.readObject();

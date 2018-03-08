@@ -50,8 +50,20 @@ public class Request implements Runnable{
                     Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            if(request.substring(6).startsWith("/send:")){
             
+            if(request.substring(6).startsWith("/send:")){
+            try {
+                    String IP =request.substring(6).split(";")[0];
+                    String message = request.substring(6).split(";")[1];
+                    if(Chating.connections.containsKey(IP)){
+                    
+                    Connecter.SendTo(Chating.connections.get(IP),message);
+                    }                   
+                } catch (IOException ex) {
+                    Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
             }
