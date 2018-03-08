@@ -34,8 +34,8 @@ public class Connecter {
             ObjectInputStream is = new ObjectInputStream(s1.getInputStream());
             Message returnMessage = (Message) is.readObject();
             System.out.println(returnMessage.Message);  
-            if(returnMessage.Message.startsWith("/accept:")){
-                String Name=returnMessage.Message.substring(8);
+            if(returnMessage.Message.startsWith("/accept")){
+                String Name=returnMessage.User;
                 connection=new Connection(Name,Ip,Integer.parseInt(Port));
                 
             }   
