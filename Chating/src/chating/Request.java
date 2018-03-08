@@ -29,6 +29,7 @@ public class Request implements Runnable{
                     String IP =request.substring(9).split(";")[0];
                     if(!Chating.connections.containsKey(IP)){
                     String Port =request.split(";")[1];
+                    System.out.println("IP:"+IP+";Port:"+Port);
                     Connection connection=Connecter.ConnectTo(Chating.Name,IP, Port);
                     if(connection!=null){Chating.connections.put(connection.IP, connection);}
                     }                   

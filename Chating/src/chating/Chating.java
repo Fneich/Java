@@ -23,12 +23,9 @@ public class Chating {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter You Name:");
         Name=sc.nextLine();
-        //Hoster hoster = new Hoster();
-        //Thread threadhoster = new Thread(hoster);
-        //threadhoster.start();
-       // Connecter connecter = new Connecter();
-       // Thread threadconnecter = new Thread(connecter);
-       // threadconnecter.start();
+        Hoster hoster = new Hoster();
+        Thread threadhoster = new Thread(hoster);
+        threadhoster.start();
         Request request = new Request();
         Thread threadRequest = new Thread(request);
         threadRequest.start();
