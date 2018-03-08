@@ -35,7 +35,7 @@ public class Hoster implements Runnable {
                             if(returnMessage.Message.startsWith("/connect:")){
                                 
             String ip_port=returnMessage.Message.substring(9);
-           String Ip =ip_port.split(";")[1];
+           String Ip =s.getInetAddress().getHostAddress();
            int Port =Integer.parseInt(ip_port.split(";")[2]);
            String Name=ip_port.split(";")[0];
 
