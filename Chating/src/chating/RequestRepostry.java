@@ -6,8 +6,6 @@
 package chating;
 
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,9 +14,8 @@ import java.util.logging.Logger;
  *
  * @author Fneich
  */
-public class Request implements Runnable{
-
-    @Override
+public class RequestRepostry implements Runnable{
+        @Override
     public void run() {
 
             Scanner sc = new Scanner(System.in);
@@ -37,9 +34,9 @@ public class Request implements Runnable{
                     }
                     }                   
                 } catch (IOException ex) {
-                    Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RequestRepostry.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RequestRepostry.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             if(request.startsWith("/close:")){
@@ -49,9 +46,9 @@ public class Request implements Runnable{
                     Connecter.CloseTo(Chating.connections.get(IP));
                     }                   
                 } catch (IOException ex) {
-                    Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RequestRepostry.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RequestRepostry.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             
@@ -59,20 +56,17 @@ public class Request implements Runnable{
             try {
                     String IP =request.substring(6).split(";")[0];
                     String message = request.substring(6).split(";")[1];
-                    System.out.println("IP:"+IP);
                     if(Chating.connections.containsKey(IP)){
-                    System.out.println("IP:"+message);
                     Connecter.SendTo(Chating.connections.get(IP),message);
                     }                   
                 } catch (IOException ex) {
-                    Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RequestRepostry.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RequestRepostry.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
             }
         
     }
-    
 }

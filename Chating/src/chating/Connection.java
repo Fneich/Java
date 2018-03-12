@@ -19,7 +19,7 @@ public class Connection {
     public Thread ReceverThread;
     
     public Connection(String name,String ip,int portNb){
-        
+     this.Name=name;   
     this.IP=ip;
     this.PortNb=portNb;
     //this.sender = new Sender(this.IP,this.PortNb);

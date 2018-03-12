@@ -16,10 +16,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Fneich
- */
+
 public class Recever implements Runnable{
 
     
@@ -36,10 +33,8 @@ public class Recever implements Runnable{
             Socket s = ss.accept();
             ObjectInputStream is = new ObjectInputStream(s.getInputStream());
             while(this.Running){
-                // System.out.println("Recever is running...");
-           
+                System.out.println("Waiting...");
                 Message returnMessage = (Message) is.readObject();
-                Data.Messages.put(returnMessage.User, returnMessage);
                 System.out.println(returnMessage.toString());
             }
         } catch (IOException ex) {
