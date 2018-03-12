@@ -28,10 +28,13 @@ public class Recever implements Runnable{
     @Override
     public void run() {
         try {
-
+            
             ServerSocket ss = new ServerSocket(this.PortNb);
+            System.out.println("Recever Running...");
             Socket s = ss.accept();
+            System.out.println("Recever Running...");
             ObjectInputStream is = new ObjectInputStream(s.getInputStream());
+            System.out.println(this.Running);
             while(this.Running){
                 System.out.println("Waiting...");
                 Message returnMessage = (Message) is.readObject();

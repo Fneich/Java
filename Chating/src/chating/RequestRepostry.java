@@ -28,7 +28,6 @@ public class RequestRepostry implements Runnable{
                     String Port =request.split(";")[1];
                     
                     Connection connection=Connecter.ConnectTo(Chating.Name,IP, Port);
-                    System.out.println("count:"+connection);
                     if(connection!=null){Chating.connections.put(connection.IP, connection);
                     connection.Connect();
                     }

@@ -37,7 +37,6 @@ public class Connecter {
             if(returnMessage.Message.startsWith("/accept")){
                 String Name=returnMessage.User;
                 connection=new Connection(Name,Ip,Integer.parseInt(Port));
-                connection.Connect();
             }   
             return connection;
     }
